@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tennis ACQUA OPEN</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: linear-gradient(180deg, #ecfeff 0%, #f8fafc 35%, #eef2ff 100%); }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800">
+  <div class="max-w-7xl mx-auto px-4 py-6 md:px-8 md:py-8 space-y-6">
+    <section class="overflow-hidden rounded-[28px] bg-slate-950 text-white shadow-2xl">
+      <div class="grid gap-6 p-6 md:grid-cols-[1.35fr_0.65fr] md:p-8 items-center">
+        <div class="flex flex-col items-start gap-4">
+          <img
+            src="logo-acqua-open.png"
+            alt="Logo ACQUA OPEN"
+            class="h-28 w-auto object-contain"
+            onerror="this.style.display='none'; document.getElementById('logoFallback').classList.remove('hidden');"
+          />
+          <div id="logoFallback" class="hidden h-24 w-24 rounded-full border-2 border-cyan-300/40 bg-white/10 text-white text-xs font-bold tracking-wider flex items-center justify-center text-center leading-tight">
+            ACQUA<br>OPEN
+          </div>
+          <span class="inline-flex rounded-full bg-cyan-400/15 px-4 py-1 text-sm font-semibold text-cyan-300 border border-cyan-300/20">
+            Campeonato de Tênis
+          </span>
+          <h1 class="text-3xl md:text-5xl font-black tracking-tight">Tennis ACQUA OPEN</h1>
+          <p class="text-slate-300 max-w-2xl text-sm md:text-base leading-6">
+            Ranking por games ganhos, com apoio de games perdidos e saldo total.
+          </p>
+        </div>
+
+        <div class="grid gap-3">
+          <div class="rounded-3xl bg-white/10 p-5 border border-white/10 backdrop-blur-sm">
+            <p class="text-sm text-slate-300">Líder no momento</p>
+            <p id="leaderName" class="mt-1 text-2xl font-bold">—</p>
+            <p id="leaderStats" class="mt-1 text-sm text-slate-300">—</p>
+          </div>
+          <div class="rounded-3xl bg-white/10 p-5 border border-white/10 backdrop-blur-sm">
+            <p class="text-sm text-slate-300">Atualização</p>
+            <p id="playedCount" class="mt-1 text-2xl font-bold">0 jogos lançados</p>
+            <p id="scheduledCount" class="mt-1 text-sm text-slate-300">0 jogos ainda sem placar</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid gap-4 md:grid-cols-4">
+      <div class="rounded-3xl bg-white p-5 shadow-md border border-slate-100"><p class="text-sm text-slate-500">Jogos com placar</p><p id="cardPlayed" class="mt-1 text-3xl font-black">0</p><p class="text-xs text-slate-500 mt-1">Contam no ranking</p></div>
+      <div class="rounded-3xl bg-white p-5 shadow-md border border-slate-100"><p class="text-sm text-slate-500">Jogos agendados</p><p id="cardScheduled" class="mt-1 text-3xl font-black">0</p><p class="text-xs text-slate-500 mt-1">Aguardando resultado</p></div>
+      <div class="rounded-3xl bg-white p-5 shadow-md border border-slate-100"><p class="text-sm text-slate-500">Líder em games</p><p id="cardLeaderGames" class="mt-1 text-3xl font-black">0</p><p id="cardLeaderName" class="text-xs text-slate-500 mt-1">—</p></div>
+      <div class="rounded-3xl bg-white p-5 shadow-md border border-slate-100"><p class="text-sm text-slate-500">1º lugar</p><p id="cardLeaderPlace" class="mt-1 text-3xl font-black">—</p><p class="text-xs text-slate-500 mt-1">Ranking atual</p></div>
+    </section>
+
+    <section class="rounded-[28px] bg-white p-3 shadow-md border border-slate-100">
+      <div class="flex flex-wrap gap-2">
+        <button class="tab-button rounded-2xl px-4 py-2 text-sm font-semibold bg-slate-900 text-white" data-tab="ranking">Ranking</button>
+        <button class="tab-button rounded-2xl px-4 py-2 text-sm font-semibold bg-slate-100 text-slate-700" data-tab="jogos">Tabela de jogos</button>
+        <button class="tab-button rounded-2xl px-4 py-2 text-sm font-semibold bg-slate-100 text-slate-700" data-tab="placares">Placares lançados</button>
+      </div>
+    </section>
+
+    <section id="tab-ranking" class="tab-panel rounded-[28px] bg-white shadow-md border border-slate-100 overflow-hidden">
+      <div class="p-6 border-b border-slate-100">
+        <h2 class="text-2xl font-black">Ranking do Tennis ACQUA OPEN</h2>
+        <p class="text-sm text-slate-500 mt-1">Classificação por games ganhos, saldo, vitórias e menos games perdidos.</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[760px] text-sm">
+          <thead class="bg-slate-50 text-slate-500">
+            <tr>
+              <th class="px-4 py-3 text-left">#</th>
+              <th class="px-4 py-3 text-left">Jogador</th>
+              <th class="px-4 py-3 text-left">PJ</th>
+              <th class="px-4 py-3 text-left">V</th>
+              <th class="px-4 py-3 text-left">D</th>
+              <th class="px-4 py-3 text-left">Games ganhos</th>
+              <th class="px-4 py-3 text-left">Games perdidos</th>
+              <th class="px-4 py-3 text-left">Saldo</th>
+            </tr>
+          </thead>
+          <tbody id="rankingBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="tab-jogos" class="tab-panel hidden rounded-[28px] bg-white shadow-md border border-slate-100 overflow-hidden">
+      <div class="p-6 border-b border-slate-100 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 class="text-2xl font-black">Tabela completa</h2>
+          <p class="text-sm text-slate-500 mt-1">Pesquise por jogador para localizar partidas rapidamente.</p>
+        </div>
+        <input id="searchInput" type="text" placeholder="Buscar jogador" class="w-full md:w-80 rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-cyan-300" />
+      </div>
+      <div id="matchesContainer" class="p-6 space-y-6"></div>
+    </section>
+
+    <section id="tab-placares" class="tab-panel hidden rounded-[28px] bg-white shadow-md border border-slate-100 overflow-hidden">
+      <div class="p-6 border-b border-slate-100">
+        <h2 class="text-2xl font-black">Jogos já lançados</h2>
+        <p class="text-sm text-slate-500 mt-1">Ao incluir novos placares, o ranking recalcula automaticamente.</p>
+      </div>
+      <div id="scoresContainer" class="p-6 grid gap-3 md:grid-cols-2"></div>
+    </section>
+  </div>
+
+  <script>
+    const matches = [
+      { date: "2026-04-01", label: "01/04/2026 – Quarta-feira", players: ["Alessandro", "Celo"], score: [0, 6] },
+      { date: "2026-04-01", label: "01/04/2026 – Quarta-feira", players: ["Diego", "Kaue"], score: [5, 6] },
+      { date: "2026-04-01", label: "01/04/2026 – Quarta-feira", players: ["Cadu", "Bruno"], score: [4, 6] },
+      { date: "2026-04-01", label: "01/04/2026 – Quarta-feira", players: ["Tiago", "Eduardo"], score: [5, 6] },
+      { date: "2026-04-02", label: "02/04/2026 – Quinta-feira", players: ["Halan", "JOHN"], score: [1, 6] },
+      { date: "2026-04-02", label: "02/04/2026 – Quinta-feira", players: ["Jailson", "Alessandro"], score: [1, 6] },
+      { date: "2026-04-04", label: "04/04/2026 – Sábado", players: ["JOHN", "Joãozinho"], score: [6, 2] },
+      { date: "2026-04-08", label: "08/04/2026 – Quarta-feira", players: ["Joãozinho", "Nadal"], score: [6, 1] },
+      { date: "2026-04-08", label: "08/04/2026 – Quarta-feira", players: ["Bruno", "Eduardo"], score: null },
+      { date: "2026-04-08", label: "08/04/2026 – Quarta-feira", players: ["Alessandro", "Cadu"], score: null },
+      { date: "2026-04-08", label: "08/04/2026 – Quarta-feira", players: ["Diego", "Tiago"], score: [5, 6] },
+      { date: "2026-04-09", label: "09/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Halan", "Nadal"], score: null },
+      { date: "2026-04-09", label: "09/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Joãozinho", "Jailson"], score: null },
+      { date: "2026-04-09", label: "09/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Alessandro", "Bruno"], score: null },
+      { date: "2026-04-09", label: "09/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Diego", "Halan"], score: null },
+      { date: "2026-04-11", label: "11/04/2026 – Sábado", players: ["Diego", "Cadu"], score: null },
+      { date: "2026-04-11", label: "11/04/2026 – Sábado", players: ["Bruno", "Tiago"], score: [6, 5] },
+      { date: "2026-04-11", label: "11/04/2026 – Sábado", players: ["Celo", "Eduardo"], score: null },
+      { date: "2026-04-11", label: "11/04/2026 – Sábado", players: ["Halan", "Joãozinho"], score: null },
+      { date: "2026-04-12", label: "12/04/2026 – Domingo", players: ["Nadal", "Jailson"], score: null },
+      { date: "2026-04-12", label: "12/04/2026 – Domingo", players: ["Alessandro", "Kaue"], score: null },
+      { date: "2026-04-12", label: "12/04/2026 – Domingo", players: ["Diego", "Bruno"], score: null },
+      { date: "2026-04-12", label: "12/04/2026 – Domingo", players: ["Celo", "Cadu"], score: null },
+      { date: "2026-04-13", label: "13/04/2026 – Segunda-feira", players: ["Tiago", "Eduardo"], score: null },
+      { date: "2026-04-13", label: "13/04/2026 – Segunda-feira", players: ["JOHN", "Nadal"], score: [6, 1] },
+      { date: "2026-04-13", label: "13/04/2026 – Segunda-feira", players: ["Jailson", "Kaue"], score: null },
+      { date: "2026-04-13", label: "13/04/2026 – Segunda-feira", players: ["Bruno", "Eduardo"], score: null },
+      { date: "2026-04-15", label: "15/04/2026 – Quarta-feira", players: ["Alessandro", "Diego"], score: null },
+      { date: "2026-04-15", label: "15/04/2026 – Quarta-feira", players: ["Bruno", "Celo"], score: null },
+      { date: "2026-04-15", label: "15/04/2026 – Quarta-feira", players: ["Cadu", "Tiago"], score: null },
+      { date: "2026-04-15", label: "15/04/2026 – Quarta-feira", players: ["Eduardo", "JOHN"], score: null },
+      { date: "2026-04-16", label: "16/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Diego", "Nadal"], score: null },
+      { date: "2026-04-16", label: "16/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Joãozinho", "Cadu"], score: null },
+      { date: "2026-04-16", label: "16/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Cadu", "Halan"], score: null },
+      { date: "2026-04-16", label: "16/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Alessandro", "Eduardo"], score: null },
+      { date: "2026-04-18", label: "18/04/2026 – Sábado", players: ["Celo", "Joãozinho"], score: null },
+      { date: "2026-04-18", label: "18/04/2026 – Sábado", players: ["Diego", "Bruno"], score: null },
+      { date: "2026-04-18", label: "18/04/2026 – Sábado", players: ["JOHN", "Jailson"], score: null },
+      { date: "2026-04-18", label: "18/04/2026 – Sábado", players: ["Nadal", "Kaue"], score: null },
+      { date: "2026-04-19", label: "19/04/2026 – Domingo", players: ["Cadu", "Eduardo"], score: null },
+      { date: "2026-04-19", label: "19/04/2026 – Domingo", players: ["Tiago", "JOHN"], score: [0, 6] },
+      { date: "2026-04-19", label: "19/04/2026 – Domingo", players: ["Joãozinho", "Kaue"], score: null },
+      { date: "2026-04-19", label: "19/04/2026 – Domingo", players: ["Nadal", "Alessandro"], score: null },
+      { date: "2026-04-20", label: "20/04/2026 – Segunda-feira", players: ["Jailson", "Cadu"], score: null },
+      { date: "2026-04-20", label: "20/04/2026 – Segunda-feira", players: ["Bruno", "JOHN"], score: null },
+      { date: "2026-04-20", label: "20/04/2026 – Segunda-feira", players: ["Joãozinho", "Diego"], score: null },
+      { date: "2026-04-20", label: "20/04/2026 – Segunda-feira", players: ["Tiago", "Halan"], score: null },
+      { date: "2026-04-22", label: "22/04/2026 – Quarta-feira", players: ["Celo", "Kaue"], score: null },
+      { date: "2026-04-22", label: "22/04/2026 – Quarta-feira", players: ["Eduardo", "Jailson"], score: null },
+      { date: "2026-04-22", label: "22/04/2026 – Quarta-feira", players: ["Alessandro", "Tiago"], score: null },
+      { date: "2026-04-22", label: "22/04/2026 – Quarta-feira", players: ["Bruno", "Nadal"], score: null },
+      { date: "2026-04-23", label: "23/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Eduardo", "Halan"], score: null },
+      { date: "2026-04-23", label: "23/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Joãozinho", "JOHN"], score: null },
+      { date: "2026-04-23", label: "23/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Alessandro", "Jailson"], score: null },
+      { date: "2026-04-23", label: "23/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Diego", "Eduardo"], score: null },
+      { date: "2026-04-25", label: "25/04/2026 – Sábado", players: ["Joãozinho", "Bruno"], score: null },
+      { date: "2026-04-25", label: "25/04/2026 – Sábado", players: ["Eduardo", "Nadal"], score: null },
+      { date: "2026-04-25", label: "25/04/2026 – Sábado", players: ["Diego", "Jailson"], score: null },
+      { date: "2026-04-25", label: "25/04/2026 – Sábado", players: ["Celo", "Tiago"], score: null },
+      { date: "2026-04-26", label: "26/04/2026 – Domingo", players: ["Kaue", "Eduardo"], score: null },
+      { date: "2026-04-26", label: "26/04/2026 – Domingo", players: ["Halan", "Alessandro"], score: null },
+      { date: "2026-04-26", label: "26/04/2026 – Domingo", players: ["Bruno", "Jailson"], score: null },
+      { date: "2026-04-26", label: "26/04/2026 – Domingo", players: ["Nadal", "Cadu"], score: null },
+      { date: "2026-04-27", label: "27/04/2026 – Segunda-feira", players: ["Alessandro", "Eduardo"], score: null },
+      { date: "2026-04-27", label: "27/04/2026 – Segunda-feira", players: ["Diego", "JOHN"], score: null },
+      { date: "2026-04-27", label: "27/04/2026 – Segunda-feira", players: ["Jailson", "Tiago"], score: null },
+      { date: "2026-04-27", label: "27/04/2026 – Segunda-feira", players: ["Bruno", "Eduardo"], score: null },
+      { date: "2026-04-29", label: "29/04/2026 – Quarta-feira", players: ["Bruno", "Diego"], score: null },
+      { date: "2026-04-29", label: "29/04/2026 – Quarta-feira", players: ["Celo", "Halan"], score: null },
+      { date: "2026-04-29", label: "29/04/2026 – Quarta-feira", players: ["Eduardo", "Halan"], score: null },
+      { date: "2026-04-29", label: "29/04/2026 – Quarta-feira", players: ["Joãozinho", "JOHN"], score: null },
+      { date: "2026-04-30", label: "30/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Diego", "Bruno"], score: null },
+      { date: "2026-04-30", label: "30/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Tiago", "Nadal"], score: null },
+      { date: "2026-04-30", label: "30/04/2026 – Quinta-feira", note: "Celo e Kaue não jogam", players: ["Halan", "Jailson"], score: null },
+      { date: "2026-05-02", label: "02/05/2026 – Sábado (Encerramento)", players: ["Diego", "Celo"], score: null },
+      { date: "2026-05-02", label: "02/05/2026 – Sábado (Encerramento)", players: ["Kaue", "Eduardo"], score: null }
+    ];
+
+    const players = [...new Set(matches.flatMap(match => match.players))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+
+    function buildRanking(data) {
+      const table = {};
+      players.forEach(player => {
+        table[player] = { name: player, jogos: 0, vitorias: 0, derrotas: 0, gamesGanhos: 0, gamesPerdidos: 0, saldo: 0 };
+      });
+      data.forEach(match => {
+        if (!match.score) return;
+        const [a, b] = match.players;
+        const [sa, sb] = match.score;
+        table[a].jogos += 1;
+        table[b].jogos += 1;
+        table[a].gamesGanhos += sa;
+        table[a].gamesPerdidos += sb;
+        table[b].gamesGanhos += sb;
+        table[b].gamesPerdidos += sa;
+        if (sa > sb) {
+          table[a].vitorias += 1;
+          table[b].derrotas += 1;
+        } else {
+          table[b].vitorias += 1;
+          table[a].derrotas += 1;
+        }
+      });
+      return Object.values(table)
+        .map(item => ({ ...item, saldo: item.gamesGanhos - item.gamesPerdidos }))
+        .sort((a, b) => {
+          if (b.gamesGanhos !== a.gamesGanhos) return b.gamesGanhos - a.gamesGanhos;
+          if (b.saldo !== a.saldo) return b.saldo - a.saldo;
+          if (b.vitorias !== a.vitorias) return b.vitorias - a.vitorias;
+          if (a.gamesPerdidos !== b.gamesPerdidos) return a.gamesPerdidos - b.gamesPerdidos;
+          return a.name.localeCompare(b.name, 'pt-BR');
+        })
+        .map((item, index) => ({ ...item, posicao: index + 1 }));
+    }
+
+    function groupMatches(data, term = '') {
+      const grouped = {};
+      const search = term.trim().toLowerCase();
+      data.forEach(match => {
+        const include = !search || match.players.some(player => player.toLowerCase().includes(search));
+        if (!include) return;
+        if (!grouped[match.label]) grouped[match.label] = { note: match.note, matches: [] };
+        grouped[match.label].matches.push(match);
+      });
+      return grouped;
+    }
+
+    function renderRanking() {
+      const ranking = buildRanking(matches);
+      const body = document.getElementById('rankingBody');
+      body.innerHTML = ranking.map((row, index) => `
+        <tr class="border-t border-slate-100 ${index < 3 ? 'bg-cyan-50/70' : 'bg-white'}">
+          <td class="px-4 py-3 font-bold">${row.posicao}</td>
+          <td class="px-4 py-3 font-semibold">${row.name}</td>
+          <td class="px-4 py-3">${row.jogos}</td>
+          <td class="px-4 py-3">${row.vitorias}</td>
+          <td class="px-4 py-3">${row.derrotas}</td>
+          <td class="px-4 py-3 font-semibold">${row.gamesGanhos}</td>
+          <td class="px-4 py-3">${row.gamesPerdidos}</td>
+          <td class="px-4 py-3 font-semibold ${row.saldo > 0 ? 'text-emerald-600' : row.saldo < 0 ? 'text-rose-600' : 'text-slate-700'}">${row.saldo > 0 ? '+' + row.saldo : row.saldo}</td>
+        </tr>
+      `).join('');
+      const leader = ranking[0];
+      const played = matches.filter(match => match.score).length;
+      const scheduled = matches.filter(match => !match.score).length;
+      document.getElementById('leaderName').textContent = leader ? leader.name : '—';
+      document.getElementById('leaderStats').textContent = leader ? `${leader.gamesGanhos} games ganhos · saldo ${leader.saldo > 0 ? '+' + leader.saldo : leader.saldo}` : '—';
+      document.getElementById('playedCount').textContent = `${played} jogos lançados`;
+      document.getElementById('scheduledCount').textContent = `${scheduled} jogos ainda sem placar`;
+      document.getElementById('cardPlayed').textContent = played;
+      document.getElementById('cardScheduled').textContent = scheduled;
+      document.getElementById('cardLeaderGames').textContent = leader ? leader.gamesGanhos : 0;
+      document.getElementById('cardLeaderName').textContent = leader ? leader.name : '—';
+      document.getElementById('cardLeaderPlace').textContent = leader ? leader.name : '—';
+    }
+
+    function renderMatches(term = '') {
+      const container = document.getElementById('matchesContainer');
+      const grouped = groupMatches(matches, term);
+      container.innerHTML = Object.entries(grouped).map(([label, payload]) => `
+        <div class="space-y-3 rounded-3xl bg-slate-50 p-4 border border-slate-100">
+          <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <h3 class="text-lg font-black text-slate-900">${label}</h3>
+            ${payload.note ? `<span class="inline-flex w-fit rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">${payload.note}</span>` : ''}
+          </div>
+          <div class="space-y-2">
+            ${payload.matches.map(match => `
+              <div class="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                <div class="min-w-0 flex-1">
+                  <p class="text-sm font-semibold text-slate-900">${match.players[0]} <span class="text-slate-400">×</span> ${match.players[1]}</p>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  ${match.score ? `<span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Finalizado</span><div class="rounded-xl bg-slate-900 px-3 py-1 text-sm font-bold text-white">${match.score[0]} x ${match.score[1]}</div>` : `<span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">A realizar</span><div class="rounded-xl bg-slate-100 px-3 py-1 text-sm font-bold text-slate-500">—</div>`}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderScores() {
+      const container = document.getElementById('scoresContainer');
+      container.innerHTML = matches.filter(match => match.score).map(match => `
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div class="mb-2 flex items-center justify-between gap-3">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">${match.label}</p>
+            <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Encerrado</span>
+          </div>
+          <div class="flex items-center justify-between gap-4">
+            <div class="min-w-0 flex-1 text-sm font-semibold text-slate-900">${match.players[0]}</div>
+            <div class="rounded-xl bg-slate-900 px-3 py-1 text-base font-bold text-white">${match.score[0]} x ${match.score[1]}</div>
+            <div class="min-w-0 flex-1 text-right text-sm font-semibold text-slate-900">${match.players[1]}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tab;
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.className = 'tab-button rounded-2xl px-4 py-2 text-sm font-semibold bg-slate-100 text-slate-700';
+        });
+        button.className = 'tab-button rounded-2xl px-4 py-2 text-sm font-semibold bg-slate-900 text-white';
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
+        document.getElementById(`tab-${target}`).classList.remove('hidden');
+      });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', (e) => renderMatches(e.target.value));
+
+    renderRanking();
+    renderMatches();
+    renderScores();
+  </script>
+</body>
+</html>
