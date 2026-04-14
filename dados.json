@@ -2,24 +2,20 @@
   "tournamentName": "Tennis ACQUA OPEN",
   "logo": "logo-acqua-open.png",
   "matches": [
-    { "date": "2026-04-01", "label": "01/04/2026 – Quarta-feira", "players": ["Alessandro", "Celo"], "score": [0, 6] },
     { "date": "2026-04-01", "label": "01/04/2026 – Quarta-feira", "players": ["Diego", "Kaue"], "score": [5, 6] },
     { "date": "2026-04-01", "label": "01/04/2026 – Quarta-feira", "players": ["Cadu", "Bruno"], "score": [4, 6] },
     { "date": "2026-04-01", "label": "01/04/2026 – Quarta-feira", "players": ["Tiago", "Eduardo"], "score": [5, 6] },
 
     { "date": "2026-04-02", "label": "02/04/2026 – Quinta-feira", "players": ["Halan", "JOHN"], "score": [1, 6] },
-    { "date": "2026-04-02", "label": "02/04/2026 – Quinta-feira", "players": ["Jailson", "Alessandro"], "score": [1, 6] },
 
     { "date": "2026-04-04", "label": "04/04/2026 – Sábado", "players": ["JOHN", "Joãozinho"], "score": [6, 2] },
 
     { "date": "2026-04-08", "label": "08/04/2026 – Quarta-feira", "players": ["Joãozinho", "Nadal"], "score": [6, 1] },
     { "date": "2026-04-08", "label": "08/04/2026 – Quarta-feira", "players": ["Bruno", "Eduardo"], "score": null },
-    { "date": "2026-04-08", "label": "08/04/2026 – Quarta-feira", "players": ["Alessandro", "Cadu"], "score": null },
     { "date": "2026-04-08", "label": "08/04/2026 – Quarta-feira", "players": ["Diego", "Tiago"], "score": [5, 6] },
 
     { "date": "2026-04-09", "label": "09/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Halan", "Nadal"], "score": null },
     { "date": "2026-04-09", "label": "09/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Joãozinho", "Jailson"], "score": [4, 6] },
-    { "date": "2026-04-09", "label": "09/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Alessandro", "Bruno"], "score": [6, 4] },
     { "date": "2026-04-09", "label": "09/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Diego", "Halan"], "score": null },
 
     { "date": "2026-04-11", "label": "11/04/2026 – Sábado", "players": ["Diego", "Cadu"], "score": null },
@@ -28,7 +24,6 @@
     { "date": "2026-04-11", "label": "11/04/2026 – Sábado", "players": ["Halan", "Joãozinho"], "score": [4, 6] },
 
     { "date": "2026-04-12", "label": "12/04/2026 – Domingo", "players": ["Nadal", "Jailson"], "score": null },
-    { "date": "2026-04-12", "label": "12/04/2026 – Domingo", "players": ["Alessandro", "Kaue"], "score": null },
     { "date": "2026-04-12", "label": "12/04/2026 – Domingo", "players": ["Diego", "Bruno"], "score": null },
     { "date": "2026-04-12", "label": "12/04/2026 – Domingo", "players": ["Celo", "Cadu"], "score": null },
 
@@ -37,7 +32,6 @@
     { "date": "2026-04-13", "label": "13/04/2026 – Segunda-feira", "players": ["Jailson", "Kaue"], "score": null },
     { "date": "2026-04-13", "label": "13/04/2026 – Segunda-feira", "players": ["Bruno", "Eduardo"], "score": null },
 
-    { "date": "2026-04-15", "label": "15/04/2026 – Quarta-feira", "players": ["Alessandro", "Diego"], "score": [2, 6] },
     { "date": "2026-04-15", "label": "15/04/2026 – Quarta-feira", "players": ["Bruno", "Celo"], "score": null },
     { "date": "2026-04-15", "label": "15/04/2026 – Quarta-feira", "players": ["Cadu", "Tiago"], "score": null },
     { "date": "2026-04-15", "label": "15/04/2026 – Quarta-feira", "players": ["Eduardo", "JOHN"], "score": null },
@@ -45,7 +39,6 @@
     { "date": "2026-04-16", "label": "16/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Diego", "Nadal"], "score": null },
     { "date": "2026-04-16", "label": "16/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Joãozinho", "Cadu"], "score": null },
     { "date": "2026-04-16", "label": "16/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Cadu", "Halan"], "score": null },
-    { "date": "2026-04-16", "label": "16/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Alessandro", "Eduardo"], "score": null },
 
     { "date": "2026-04-18", "label": "18/04/2026 – Sábado", "players": ["Celo", "Joãozinho"], "score": null },
     { "date": "2026-04-18", "label": "18/04/2026 – Sábado", "players": ["Diego", "Bruno"], "score": null },
@@ -55,7 +48,6 @@
     { "date": "2026-04-19", "label": "19/04/2026 – Domingo", "players": ["Cadu", "Eduardo"], "score": null },
     { "date": "2026-04-19", "label": "19/04/2026 – Domingo", "players": ["Tiago", "JOHN"], "score": [0, 6] },
     { "date": "2026-04-19", "label": "19/04/2026 – Domingo", "players": ["Joãozinho", "Kaue"], "score": null },
-    { "date": "2026-04-19", "label": "19/04/2026 – Domingo", "players": ["Nadal", "Alessandro"], "score": null },
 
     { "date": "2026-04-20", "label": "20/04/2026 – Segunda-feira", "players": ["Jailson", "Cadu"], "score": null },
     { "date": "2026-04-20", "label": "20/04/2026 – Segunda-feira", "players": ["Bruno", "JOHN"], "score": null },
@@ -64,12 +56,10 @@
 
     { "date": "2026-04-22", "label": "22/04/2026 – Quarta-feira", "players": ["Celo", "Kaue"], "score": null },
     { "date": "2026-04-22", "label": "22/04/2026 – Quarta-feira", "players": ["Eduardo", "Jailson"], "score": null },
-    { "date": "2026-04-22", "label": "22/04/2026 – Quarta-feira", "players": ["Alessandro", "Tiago"], "score": [2, 6] },
     { "date": "2026-04-22", "label": "22/04/2026 – Quarta-feira", "players": ["Bruno", "Nadal"], "score": null },
 
     { "date": "2026-04-23", "label": "23/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Eduardo", "Halan"], "score": null },
     { "date": "2026-04-23", "label": "23/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Joãozinho", "JOHN"], "score": null },
-    { "date": "2026-04-23", "label": "23/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Alessandro", "Jailson"], "score": null },
     { "date": "2026-04-23", "label": "23/04/2026 – Quinta-feira", "note": "Celo e Kaue não jogam", "players": ["Diego", "Eduardo"], "score": null },
 
     { "date": "2026-04-25", "label": "25/04/2026 – Sábado", "players": ["Joãozinho", "Bruno"], "score": null },
@@ -78,11 +68,9 @@
     { "date": "2026-04-25", "label": "25/04/2026 – Sábado", "players": ["Celo", "Tiago"], "score": null },
 
     { "date": "2026-04-26", "label": "26/04/2026 – Domingo", "players": ["Kaue", "Eduardo"], "score": null },
-    { "date": "2026-04-26", "label": "26/04/2026 – Domingo", "players": ["Halan", "Alessandro"], "score": null },
     { "date": "2026-04-26", "label": "26/04/2026 – Domingo", "players": ["Bruno", "Jailson"], "score": null },
     { "date": "2026-04-26", "label": "26/04/2026 – Domingo", "players": ["Nadal", "Cadu"], "score": null },
 
-    { "date": "2026-04-27", "label": "27/04/2026 – Segunda-feira", "players": ["Alessandro", "Eduardo"], "score": null },
     { "date": "2026-04-27", "label": "27/04/2026 – Segunda-feira", "players": ["Diego", "JOHN"], "score": null },
     { "date": "2026-04-27", "label": "27/04/2026 – Segunda-feira", "players": ["Jailson", "Tiago"], "score": null },
     { "date": "2026-04-27", "label": "27/04/2026 – Segunda-feira", "players": ["Bruno", "Eduardo"], "score": null },
