@@ -59,39 +59,15 @@
     { "date": "2026-04-22", "label": "22/04/2026 – Quarta-feira", "players": ["Eduardo", "Jailson"], "score": null },
     { "date": "2026-04-22", "label": "22/04/2026 – Quarta-feira", "players": ["Bruno", "Nadal"], "score": null },
 
-    { "date": "2026-04-23", "label": "23/04/2026 – Quinta-feira", "players": ["Eduardo", "Halan"], "score": null },
-    { "date": "2026-04-23", "label": "23/04/2026 – Quinta-feira", "players": ["Joãozinho", "JOHN"], "score": null },
-    { "date": "2026-04-23", "label": "23/04/2026 – Quinta-feira", "players": ["Diego", "Eduardo"], "score": null },
-
-    { "date": "2026-04-25", "label": "25/04/2026 – Sábado", "players": ["Joãozinho", "Bruno"], "score": null },
-    { "date": "2026-04-25", "label": "25/04/2026 – Sábado", "players": ["Eduardo", "Nadal"], "score": null },
-    { "date": "2026-04-25", "label": "25/04/2026 – Sábado", "players": ["Diego", "Jailson"], "score": null },
-    { "date": "2026-04-25", "label": "25/04/2026 – Sábado", "players": ["Celo", "Tiago"], "score": null },
-
-    { "date": "2026-04-26", "label": "26/04/2026 – Domingo", "players": ["Kaue", "Eduardo"], "score": null },
-    { "date": "2026-04-26", "label": "26/04/2026 – Domingo", "players": ["Bruno", "Jailson"], "score": null },
-    { "date": "2026-04-26", "label": "26/04/2026 – Domingo", "players": ["Nadal", "Cadu"], "score": null },
-
-    { "date": "2026-04-27", "label": "27/04/2026 – Segunda-feira", "players": ["Diego", "JOHN"], "score": null },
-    { "date": "2026-04-27", "label": "27/04/2026 – Segunda-feira", "players": ["Jailson", "Tiago"], "score": null },
-    { "date": "2026-04-27", "label": "27/04/2026 – Segunda-feira", "players": ["Bruno", "Eduardo"], "score": null },
-
-    { "date": "2026-04-29", "label": "29/04/2026 – Quarta-feira", "players": ["Bruno", "Diego"], "score": null },
-    { "date": "2026-04-29", "label": "29/04/2026 – Quarta-feira", "players": ["Celo", "Halan"], "score": null },
-    { "date": "2026-04-29", "label": "29/04/2026 – Quarta-feira", "players": ["Eduardo", "Halan"], "score": null },
-    { "date": "2026-04-29", "label": "29/04/2026 – Quarta-feira", "players": ["Joãozinho", "JOHN"], "score": null },
-
-    { "date": "2026-04-30", "label": "30/04/2026 – Quinta-feira", "players": ["Diego", "Bruno"], "score": null },
-    { "date": "2026-04-30", "label": "30/04/2026 – Quinta-feira", "players": ["Tiago", "Nadal"], "score": null },
-    { "date": "2026-04-30", "label": "30/04/2026 – Quinta-feira", "players": ["Halan", "Jailson"], "score": null },
-
-    { "date": "2026-05-02", "label": "02/05/2026 – Sábado (Encerramento)", "players": ["Diego", "Celo"], "score": null },
-    { "date": "2026-05-02", "label": "02/05/2026 – Sábado (Encerramento)", "players": ["Kaue", "Eduardo"], "score": null },
-
     { "date": "2026-05-03", "label": "03/05/2026 – Jogo extra", "players": ["Joãozinho", "Tiago"], "score": [2, 6] },
 
     { "date": "2026-05-04", "label": "04/05/2026 – Jogo extra", "players": ["Celo", "Joãozinho"], "score": [6, 1] },
-    { "date": "2026-05-04", "label": "04/05/2026 – Jogo extra", "players": ["Celo", "Bruno"], "score": [6, 1] }
+    { "date": "2026-05-04", "label": "04/05/2026 – Jogo extra", "players": ["Celo", "Bruno"], "score": [6, 1] },
+
+    { "date": "2026-05-06", "label": "06/05/2026 – Jogo extra", "players": ["Celo", "Halan"], "score": [6, 1] },
+    { "date": "2026-05-06", "label": "06/05/2026 – Jogo extra", "players": ["Joãozinho", "Eduardo"], "score": [6, 1] },
+    { "date": "2026-05-06", "label": "06/05/2026 – Jogo extra", "players": ["JOHN", "Celo"], "score": [1, 6] },
+    { "date": "2026-05-06", "label": "06/05/2026 – Jogo extra", "players": ["JOHN", "Diego"], "score": [6, 0] }
 
   ]
 }
